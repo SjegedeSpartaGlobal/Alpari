@@ -3,20 +3,24 @@ package com.sparta.sj;
 import org.junit.*;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
+import java.io.IOException;
 
 public class RatesFileReaderTest{
 
-    private RatesFileReader reader;
+    private static RatesFileReader reader;
 
-    @Before
-    public void createFileReader() {
+    @BeforeClass
+    public static void createFileReader() {
         reader = new RatesFileReader("resources/rates.json");
+
     }
 
     @Test
     public void testFileReaderIsCreated(){
         Assert.assertTrue(reader!=null);
+
 
     }
 
@@ -26,12 +30,12 @@ public class RatesFileReaderTest{
     }
 
 
-    @After
-    public void destroyFileReader(){
+    @AfterClass
+    public static void destroyFileReader(){
         reader = null;
     }
 
-    @Ignore
+    @Ignore @Test
     public void testReaderIsDestroyed(){
         Assert.assertTrue(reader==null);
     }
